@@ -39,12 +39,3 @@ def load_csv_data(con, csv_path, table):
 
         for row in csv_reader:
             pass
-
-
-
-
-
-
-
-
-

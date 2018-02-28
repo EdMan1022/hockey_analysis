@@ -14,7 +14,6 @@ db_user = os.environ.get('DB_USER')
 db_pwd = os.environ.get('DB_PASSWORD')
 db = os.environ.get('DB')
 
-
 mysqldb = MySQLdb.connect(host=db_host,
                           user=db_user,
                           passwd=db_pwd,
