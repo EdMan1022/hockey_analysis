@@ -28,3 +28,9 @@ $ cd hockey_analysis/
 ```
 $ mysql -u [USER] -p[PASSWORD] < ./static/sql/hockey_db_init.sql
 ``` 
+4. Now we need to build the python interpreter that loads the files. Set up a virtualenv using python 3.6
+
+5. Installing the library to talk with MySQL is difficult. Follow [this](https://github.com/PyMySQL/mysqlclient-python/blob/master/README.md) guide to install it on python 3
+6. Now install the rest of the packages in the .requirements file
+7. Create a `.env` file in the root with `DB_URI` set equal to the uri of the database, or set this environmental variable manually
+8. Run the `load_data` python script

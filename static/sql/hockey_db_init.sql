@@ -44,7 +44,7 @@ CREATE TABLE master (
   UNIQUE INDEX (hof_id)
 )ENGINE=INNODB;
 
-CREATE TABLE coach (
+CREATE TABLE Coaches (
   coach_pk INT NOT NULL AUTO_INCREMENT,
   coach_id VARCHAR(10) NOT NULL,
   year INT NOT NULL,
