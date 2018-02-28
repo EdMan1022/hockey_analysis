@@ -24,7 +24,7 @@ $ git clone https://github.com/EdMan1022/hockey_analysis.git
 $ cd hockey_analysis/ 
 ```
 
-and run the script  
+6. and run the script
 ```
 $ mysql -u [USER] -p[PASSWORD] < ./static/sql/hockey_db_init.sql
 ``` 
