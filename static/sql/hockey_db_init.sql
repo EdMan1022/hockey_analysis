@@ -27,8 +27,7 @@ CREATE TABLE master (
   last_nhl SMALLINT,
   first_wha SMALLINT,
   last_wha SMALLINT,
-  pos ENUM('C', 'D', 'G', 'L', 'R', 'L/D', 'D/L', 'D/R', 'R/D','C/D',
-                'R/C', 'F', 'L/C', 'C/R', 'C/L', 'R/L', 'D/C', 'W'),
+  pos VARCHAR(10),
   birth_year SMALLINT,
   birth_mon SMALLINT,
   birth_day SMALLINT,
@@ -47,12 +46,12 @@ CREATE TABLE master (
   UNIQUE INDEX (hof_id)
 )ENGINE=INNODB;
 
-CREATE TABLE coaches (
+CREATE TABLE coach (
   coach_pk INT NOT NULL AUTO_INCREMENT,
   coach_id VARCHAR(10) NOT NULL,
   year INT NOT NULL,
-  tmID VARCHAR(10) NOT NULL,
-  lgID VARCHAR(10) NOT NULL ,
+  tm_id VARCHAR(10) NOT NULL,
+  lg_id VARCHAR(10) NOT NULL ,
   stint TINYINT NOT NULL,
   notes VARCHAR(200),
   g SMALLINT,
@@ -65,5 +64,21 @@ CREATE TABLE coaches (
   postt SMALLINT,
   INDEX (coach_id),
   FOREIGN KEY (coach_id)
+    REFERENCES master(coach_id)
+)ENGINE=INNODB;
+
+CREATE TABLE award_player (
+  award_player_pk INT NOT NULL AUTO_INCREMENT,
+  player_id VARCHAR(10) NOT NULL,
+  award VARCHAR(200) NOT NULL,
+  year SMALLINT NOT NULL,
+  lg_id VARCHAR(10),
+  note VARCHAR(200),
+  pos VARCHAR(10),
+
+
+
+  INDEX (),
+  FOREIGN KEY ()
     REFERENCES master(coach_id)
 )ENGINE=INNODB;
