@@ -1,8 +1,9 @@
-import dotenv
 import os
-from sqlalchemy import create_engine
-from etl_scripts.load_hockey_file import import_hockey_data
 
+import dotenv
+from sqlalchemy import create_engine
+
+from etl_scripts.load_hockey_file import import_hockey_data
 
 # First loads database uri from environmental variable
 # If the user has a .env file in the root, then loads the environmental variable from it

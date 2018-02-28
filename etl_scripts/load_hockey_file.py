@@ -1,6 +1,7 @@
-from sqlalchemy.engine import Engine
-import pandas as pd
 import re
+
+import pandas as pd
+from sqlalchemy.engine import Engine
 
 
 def convert(name):
@@ -31,5 +32,3 @@ def import_hockey_data(engine: Engine, fpath):
 
     # Write the dataframe to the database table
     import_data.to_sql(name=table, con=engine, if_exists='append', index=False, chunksize=1000)
-
-
