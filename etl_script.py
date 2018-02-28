@@ -12,6 +12,7 @@ def load_from_pandas_df(con, csv_path, table):
     :return:
     """
 
+    # Initialize the data as a pandas dataframe, if dataset were larger would need to implement chunking
     import_data = pd.read_csv(csv_path)
     import_data.to_sql(name=table, con=con, if_exists='append',
                        index=False, chunksize=1000)
