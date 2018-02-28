@@ -1,8 +1,6 @@
 DROP DATABASE IF EXISTS hockey;
-CREATE DATABASE IF NOT EXISTS hockey;
-
+CREATE DATABASE hockey;
 USE hockey;
-
 DROP TABLE IF EXISTS coach, award_player, master, scoring_shootout;
 
 -- Create the table containing biographical info for all players and coaches

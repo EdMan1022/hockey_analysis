@@ -1,4 +1,4 @@
-import MySQLdb
+
 import dotenv
 import os
 import sqlalchemy
