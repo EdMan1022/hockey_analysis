@@ -65,6 +65,7 @@ CREATE TABLE coach (
   INDEX (coach_id),
   FOREIGN KEY (coach_id)
     REFERENCES master(coach_id)
+    ON UPDATE CASCADE ON DELETE CASCADE
 )ENGINE=INNODB;
 
 CREATE TABLE award_player (
@@ -79,4 +80,5 @@ CREATE TABLE award_player (
   INDEX (player_id),
   FOREIGN KEY (player_id)
     REFERENCES master(player_id)
+    ON UPDATE CASCADE ON DELETE CASCADE
 )ENGINE=INNODB;
