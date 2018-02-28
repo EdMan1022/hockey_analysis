@@ -3,8 +3,7 @@ CREATE DATABASE hockey;
 USE hockey;
 DROP TABLE IF EXISTS coach, award_player, master, scoring_shootout, scoring;
 
--- Create the table containing biographical info for all players and coaches
-
+# Create the table containing biographical info for all players and coaches
 CREATE TABLE master (
   master_pk INT NOT NULL AUTO_INCREMENT,
   player_id VARCHAR(10),
@@ -81,7 +80,7 @@ CREATE TABLE award_player (
   INDEX (player_id),
   FOREIGN KEY (player_id)
     REFERENCES master(player_id)
-    ON UPDATE CASCADE ON DELETE CASCADE -- When a player is deleted, the award_player record should be deleted
+    ON UPDATE CASCADE ON DELETE CASCADE # When a player is deleted, the award_player record should be deleted
 )ENGINE=INNODB;
 
 CREATE TABLE scoring_shootout (
@@ -98,7 +97,7 @@ CREATE TABLE scoring_shootout (
   INDEX (player_id),
   FOREIGN KEY (player_id)
     REFERENCES master(player_id)
-    ON UPDATE CASCADE ON DELETE CASCADE -- If a player is removed, their shootout records should be removed
+    ON UPDATE CASCADE ON DELETE CASCADE # If a player is removed, their shootout records should be removed
 )ENGINE=INNODB;
 
 CREATE TABLE scoring (
@@ -111,7 +110,7 @@ CREATE TABLE scoring (
   INDEX (player_id),
     FOREIGN KEY (player_id)
     REFERENCES master(player_id)
-    ON UPDATE CASCADE ON DELETE CASCADE -- If a player is removed, their shootout records should be removed
+    ON UPDATE CASCADE ON DELETE CASCADE # If a player is removed, their shootout records should be removed
 )ENGINE=INNODB;
 
 

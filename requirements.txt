@@ -1,0 +1,4 @@
+mysqlclient
+pandas
+python-dotenv
+sqlalchemy

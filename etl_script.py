@@ -33,6 +33,10 @@ def load_from_pandas_df(con, csv_path, table, columns=None):
                        index=False, chunksize=100)
 
 
+def custom_transform(df):
+    pass
+
+
 def load_csv_data(con, csv_path, table):
     """
     Inserts data from a csv file into table on the MySQL database at con
