@@ -18,7 +18,7 @@ def import_hockey_data(engine: Engine, fpath):
 
     Reads
     :param engine: Engine sqlalchemy engine connecting to the database
-    :param fpath: str path to the file that is to be loaded
+    :param fpath: dict that contains the filepath to the file being loaded, and the table the data is loaded into
     :return:
     """
 
