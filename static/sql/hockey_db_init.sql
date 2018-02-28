@@ -76,9 +76,7 @@ CREATE TABLE award_player (
   note VARCHAR(200),
   pos VARCHAR(10),
 
-
-
-  INDEX (),
-  FOREIGN KEY ()
-    REFERENCES master(coach_id)
+  INDEX (player_id),
+  FOREIGN KEY (player_id)
+    REFERENCES master(player_id)
 )ENGINE=INNODB;
