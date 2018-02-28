@@ -63,7 +63,7 @@ CREATE TABLE coach (
   postl SMALLINT,
   postt SMALLINT,
 
-  PRIMARY KEY (coach_pk)
+  PRIMARY KEY (coach_pk),
   INDEX (coach_id),
   FOREIGN KEY (coach_id)
     REFERENCES master(coach_id)
@@ -79,10 +79,14 @@ CREATE TABLE award_player (
   note VARCHAR(200),
   pos VARCHAR(10),
 
-  PRIMARY KEY (award_player_pk)
+  PRIMARY KEY (award_player_pk),
   INDEX (player_id),
   FOREIGN KEY (player_id)
     REFERENCES master(player_id)
     ON UPDATE CASCADE ON DELETE CASCADE -- When a player is deleted, the award_player record should be deleted
 )ENGINE=INNODB;
 
+CREATE TABLE scoring_shootout (
+  scoring_shootout_pk INT NOT NULL AUTO_INCREMENT,
+
+)
