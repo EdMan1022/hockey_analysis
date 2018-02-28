@@ -1,5 +1,11 @@
 import csv
 import pandas as pd
+import re
+
+
+def convert(name):
+    s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
+    return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
 
 
 def load_from_pandas_df(con, csv_path, table):
@@ -14,8 +20,13 @@ def load_from_pandas_df(con, csv_path, table):
 
     # Initialize the data as a pandas dataframe, if dataset were larger would need to implement chunking
     import_data = pd.read_csv(csv_path)
+
+    # Convert the column headers from camelcase to snake_case
+    new_headers = pd.Series(import_data.columns).apply(convert).tolist()
+    import_data.columns = new_headers
+
     import_data.to_sql(name=table, con=con, if_exists='append',
-                       index=False, chunksize=1000)
+                       index=False, chunksize=100)
 
 
 def load_csv_data(con, csv_path, table):
@@ -36,7 +47,7 @@ def load_csv_data(con, csv_path, table):
         n_cols = len(cursor.description)
         col_names = [i[0] for i in cursor.description]
 
-        # Construct
+        # Construct sql statement
 
         for row in csv_reader:
             pass

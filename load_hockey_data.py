@@ -1,6 +1,7 @@
 import MySQLdb
 import dotenv
 import os
+import sqlalchemy
 
 from etl_script import load_from_pandas_df
 
@@ -14,10 +15,8 @@ db_user = os.environ.get('DB_USER')
 db_pwd = os.environ.get('DB_PASSWORD')
 db = os.environ.get('DB')
 
-mysqldb = MySQLdb.connect(host=db_host,
-                          user=db_user,
-                          passwd=db_pwd,
-                          db=db)
+db_uri = os.environ.get('DB_URI')
+mysqldb = sqlalchemy.create_engine(db_uri)
 
 file_tables = [
     {"file": "static/csv/Master.csv", "table": "master"},
