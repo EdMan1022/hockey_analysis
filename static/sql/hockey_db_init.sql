@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS coach, award_player, master, scoring_shootout;
 
 CREATE TABLE master (
   master_pk INT NOT NULL ,
-  player_id VARCHAR(9),
+  player_id VARCHAR(10),
   coach_id VARCHAR(10),
   hof_id VARCHAR(10),
   first_name VARCHAR(200),
@@ -45,5 +45,5 @@ CREATE TABLE master (
   UNIQUE INDEX (player_id),
   UNIQUE INDEX (coach_id),
   UNIQUE INDEX (hof_id)
-
 )
+
