@@ -1,5 +1,8 @@
 USE hockey;
-SELECT award_player.player_id, award_player.year, COUNT(award_player.award) FROM award_player
-GROUP BY award_player.player_id, award_player.year
-ORDER BY COUNT(award_player.award) DESC;
-
+SELECT
+  coach.year,
+  coach.coach_id,
+  ANY_VALUE(coach.w)
+FROM coach
+GROUP BY coach.year, coach.coach_id
+ORDER BY coach.year DESC, coach.w DESC;
