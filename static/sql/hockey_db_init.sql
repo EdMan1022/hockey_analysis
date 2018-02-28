@@ -88,5 +88,17 @@ CREATE TABLE award_player (
 
 CREATE TABLE scoring_shootout (
   scoring_shootout_pk INT NOT NULL AUTO_INCREMENT,
+  player_id VARCHAR(10) NOT NULL,
+  year SMALLINT NOT NULL,
+  stint SMALLINT NOT NULL,
+  tm_id VARCHAR(3) NOT NULL,
+  s SMALLINT NOT NULL,
+  g SMALLINT NOT NULL,
+  gdg SMALLINT NOT NULL,
 
+  PRIMARY KEY (scoring_shootout_pk),
+  INDEX (player_id),
+  FOREIGN KEY (player_id)
+    REFERENCES master(player_id)
+    ON UPDATE CASCADE ON DELETE CASCADE -- If a player is removed, their shootout records should be removed
 )
