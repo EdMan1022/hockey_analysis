@@ -1,6 +1,7 @@
 import csv
 import pandas as pd
 import re
+from numpy import inf, NaN
 
 
 def convert(name):
@@ -32,7 +33,7 @@ def load_from_pandas_df(con, csv_path, table, columns=None, transform=None):
         import_data = transform(import_data)
 
     import_data.to_sql(name=table, con=con, if_exists='append',
-                       index=False, chunksize=100)
+                       index=False, chunksize=2000)
 
 
 def shootout_score_transform(df):
@@ -43,5 +44,4 @@ def shootout_score_transform(df):
     :return: transformed pandas dataframe
     """
     df.loc[:, 'shot_percentage'] = df.loc[:, 'g']/df.loc[:, 's']
-
-    return df.groupby('tm_id').sum()
+    return df.replace(inf, NaN)  # Replace the infinities produced by divide by zero with NaN

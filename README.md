@@ -35,10 +35,10 @@ $ mysql -u [USER] -p[PASSWORD] < ./static/sql/hockey_db_init.sql
 ```
 $ export DB_URI=mysql://[USER]:[PASSWORD]@localhost/hockey
 ```
-9. Run the `load_hockey_data.py` python script
+9. Download the hockey database zip file from [this link](http://opensourcesports.com/files/hockey/hdb-2012-06-23.zip), and extract the files to `./static/csv`
+
+10. Run the `load_hockey_data.py` python script
 
 ```
 $ python load_hockey_data.py
 ```
-
-10.

@@ -91,7 +91,7 @@ CREATE TABLE scoring_shootout (
   tm_id VARCHAR(3) NOT NULL,
   s SMALLINT NOT NULL,
   g SMALLINT NOT NULL,
-  shot_percentage DECIMAL,
+  shot_percentage FLOAT,
   gdg SMALLINT NOT NULL,
 
   PRIMARY KEY (scoring_shootout_pk),
