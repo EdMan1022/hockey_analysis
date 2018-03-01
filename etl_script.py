@@ -8,7 +8,7 @@ def convert(name):
     return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
 
 
-def load_from_pandas_df(con, csv_path, table, columns=None):
+def load_from_pandas_df(con, csv_path, table, columns=None, transform=None):
     """
     Insert data into the database at con using pandas
 
@@ -28,34 +28,20 @@ def load_from_pandas_df(con, csv_path, table, columns=None):
 
     if columns is not None:
         import_data = import_data.loc[:, columns]
+    if transform is not None:
+        import_data = transform(import_data)
 
     import_data.to_sql(name=table, con=con, if_exists='append',
                        index=False, chunksize=100)
 
 
-def custom_transform(df):
-    pass
-
-
-def load_csv_data(con, csv_path, table):
+def shootout_score_transform(df):
     """
-    Inserts data from a csv file into table on the MySQL database at con
+    Adds a shot percentage column by dividing the number of shootout goals by the number of shots
 
-    :param con: MySQLdb engine of the database the data is loaded into
-    :param csv_path: path to the csv file containing the data
-    :param table: name of the table the data is inserted into
-    :return: None
+    :param df: input pandas dataframe from the shootout_score data
+    :return: transformed pandas dataframe
     """
+    df.loc[:, 'shot_percentage'] = df.loc[:, 'g']/df.loc[:, 's']
 
-    with open(csv_path, 'r') as csv_file:  # Open the csv file containing the data in read mode
-        csv_reader = csv.reader(csv_file)  # initialize a csv reader for the file
-
-        # Initialize a cursor from the connection, and get the number of columns and column names from the schema
-        cursor = con.cursor()
-        n_cols = len(cursor.description)
-        col_names = [i[0] for i in cursor.description]
-
-        # Construct sql statement
-
-        for row in csv_reader:
-            pass
+    return df.groupby('tm_id').sum()

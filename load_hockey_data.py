@@ -3,7 +3,7 @@ import os
 import dotenv
 import sqlalchemy
 
-from etl_script import load_from_pandas_df
+from etl_script import load_from_pandas_df, shootout_score_transform
 
 # First loads database uri from environmental variable
 # If the user has a .env file in the root, then loads the environmental variable from it
@@ -19,7 +19,8 @@ file_tables = [
     {"file": "static/csv/Master.csv", "table": "master", "columns": None},
     {"file": "static/csv/Coaches.csv", "table": "coach", "columns": None},
     {"file": "static/csv/AwardsPlayers.csv", "table": "award_player", "columns": None},
-    {"file": "static/csv/ScoringShootout.csv", "table": "scoring_shootout", "columns": None},
+    {"file": "static/csv/ScoringShootout.csv", "table": "scoring_shootout", "columns": None,
+     "transform": shootout_score_transform},
     {"file": "static/csv/Scoring.csv", "table": "scoring", "columns": ['player_id', 'year', 'tm_id']}
 ]
 
@@ -30,5 +31,6 @@ for file_table in file_tables:
         con=mysqldb,
         csv_path=file_table['file'],
         table=file_table['table'],
-        columns=file_table['columns']
+        columns=file_table['columns'],
+        transform=file_table.get('transform')
     )

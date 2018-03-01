@@ -43,7 +43,7 @@ CREATE TABLE master (
   UNIQUE INDEX (hof_id)
 )ENGINE=INNODB;
 
-CREATE TABLE Coaches (
+CREATE TABLE coach (
   coach_pk INT NOT NULL AUTO_INCREMENT,
   coach_id VARCHAR(10) NOT NULL,
   year INT NOT NULL,
@@ -91,6 +91,7 @@ CREATE TABLE scoring_shootout (
   tm_id VARCHAR(3) NOT NULL,
   s SMALLINT NOT NULL,
   g SMALLINT NOT NULL,
+  shot_percentage DECIMAL,
   gdg SMALLINT NOT NULL,
 
   PRIMARY KEY (scoring_shootout_pk),
@@ -112,5 +113,4 @@ CREATE TABLE scoring (
     REFERENCES master(player_id)
     ON UPDATE CASCADE ON DELETE CASCADE # If a player is removed, their shootout records should be removed
 )ENGINE=INNODB;
-
 
