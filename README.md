@@ -42,3 +42,5 @@ $ export DB_URI=mysql://[USER]:[PASSWORD]@localhost/hockey
 ```
 $ python load_hockey_data.py
 ```
+
+11. Run the query files `hockey_script_a.sql`, `hockey_script_b.sql`, `hockey_script_c.sql` by replace the init script in step 6 with the desired file
