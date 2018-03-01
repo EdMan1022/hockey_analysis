@@ -9,7 +9,11 @@ $ git clone https://github.com/EdMan1022/hockey_analysis.git
 $ cd hockey_analysis/
 ```
 
-2. Create a new python venv using python 3.6 as the version and activate it
+2. Create a new python venv using python 3.6 in the project directory and activate it.
+```
+$ python3 -m venv 3.6 venv
+$ source venv/bin/activate
+```
 
 3. [Install MySQL](https://dev.mysql.com/doc/refman/5.7/en/installing.html) if it isn't already. On Ubuntu use
 ```
