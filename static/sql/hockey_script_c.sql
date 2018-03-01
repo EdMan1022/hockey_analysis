@@ -10,7 +10,7 @@ ORDER BY COUNT(award_player.award) DESC;
 # grabbed from the scoring table
 DROP VIEW IF EXISTS player_award_tm;
 CREATE View player_award_tm AS
-SELECT hockey_view_c.*, scoring.tm_id
+SELECT hockey_view_c.*, ANY_VALUE(scoring.tm_id) as tm_id
   from hockey_view_c
   LEFT JOIN (scoring)
   ON (hockey_view_c.player_id=scoring.player_id)
@@ -34,6 +34,8 @@ SELECT coach_a.* FROM coach coach_a
   LEFT JOIN coach coach_b
   ON coach_a.year = coach_b.year AND coach_a.w < coach_b.w
 WHERE coach_b.w is NULL;
+
+SELECT * from max_player_award_per_year;
 
 # Select the players whose coaches had the max number of wins during the same year that they had the max n of awards
 DROP VIEW IF EXISTS player_coach_max;
